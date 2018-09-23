@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tool_country-phone-code-gen Output</title>
+</head>
+<body>
+    <select id="aus-country">
+        <option value="">Select Country</option>
+    </select>
+    <script>
+        //Get the Data
+        fetch('./out/list.json')
+        .then(function(response) {
+            return response.json();
+        })
+        //Create the Select Dropdown
+        .then(function(result){
+            const sel = document.querySelector('#aus-country');
+            let op;
+            for(var k in result){
+                op = document.createElement('option');
+                op.value = `+${result[k]}`;
+                op.text=k;
+                sel.appendChild(op);
+            }
+        });
+    </script>
+</body>
+</html>
